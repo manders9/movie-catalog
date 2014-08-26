@@ -1,0 +1,10 @@
+<% @actor.each do |info| %>
+
+<h1><%= info["actor"] %></h1>
+<ul>
+	<label>Movie:</label>
+	<li><a href="/movies/<%=info["movie_id"]%>"><%= info["movie"] %></a></li>
+	<label>Role:</label>
+	<li><%= info["role"] %></li>
+	<% end %>
+</ul>
