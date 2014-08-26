@@ -39,6 +39,9 @@ def get_movies
 	end
 end
 
+def get_movie_details
+	movie_id = params[:movie_id]
+	query = "SELECT movies.id AS movie_id, movies.title AS movie, movies.year, movies.rating, genres.name AS genre, studios.name AS studio, actors.name AS actor, cast_members.character AS role FROM movies"
 get "/actors" do
 	@actors = get_actors
 
@@ -58,7 +61,7 @@ get "/movies" do
 	erb :"/movies/index"
 end
 
-# get "/movies/:id"
+get "/movies/:id"
 
-# 	erb :"/movies/show"
-# end
+	erb :"/movies/show"
+end
