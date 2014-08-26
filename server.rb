@@ -4,7 +4,7 @@ require "pg"
 
 def db_connection
 	begin
-		connection = PG.connect(dbname: 'movies')
+		connection = PG.connect(dbname: "movies")
 
 		yield(connection)
 
@@ -41,7 +41,13 @@ end
 
 def get_movie_details
 	movie_id = params[:movie_id]
-	query = "SELECT movies.id AS movie_id, movies.title AS movie, movies.year, movies.rating, genres.name AS genre, studios.name AS studio, actors.name AS actor, cast_members.character AS role FROM movies"
+	query = "SELECT movies.title AS movie, movies.year, movies.rating, genres.name AS genre, studios.name AS studio, actors.name AS actor, cast_members.character AS role FROM movies JOIN genres ON movies.genre_id = genres.id JOIN studios ON movies.studio_id = studios.id JOIN cast_members ON movies.id = cast_members.movie_id JOIN actors ON cast_members.actor_id = actors.id WHERE movies.id = $1"
+
+	db_connection do |conn|
+		movie_info = conn.exec_params(query, [movie_id])
+	end
+end
+
 get "/actors" do
 	@actors = get_actors
 
@@ -61,7 +67,8 @@ get "/movies" do
 	erb :"/movies/index"
 end
 
-get "/movies/:id"
+get "/movies/:id" do
+	@info = get_movie_details
 
 	erb :"/movies/show"
 end

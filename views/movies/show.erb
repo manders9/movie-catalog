@@ -1,0 +1,28 @@
+
+<h1><%= @info["movie"][0] %></h1>
+
+<ul>
+	<label>Year Released: </label>
+	<li><%= @info["year"] %></li>
+	<label>Rating: </label>
+	<li><%= @info["rating"] %></li>
+	<label>Studio: </label>
+	<li><%= @info["studio"] %></li>
+	<% end %>
+</ul>
+
+<table>
+	<tbody>
+		<tr>
+			<th>Actor </th>
+			<th>Role </th>
+		</tr>
+		<tr>
+			<% @info.each do |movie| %>
+			<td><a href="/actors/<%= @info["movie_id"]%>"><%= movie["actor"]%></a></td>
+			<td><%= @info["role"] %></td>
+			<% end %>
+		</tr>
+	</tbody>
+</table>
+
