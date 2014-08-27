@@ -1,6 +1,6 @@
 <h1>Actors</h1>
-	<ul>
+	<ol>
 			<% @actors.each do |actor| %>
-				<li><a href="/actors/<%=actor["id"]%>"><%= actor["actor"] %></a></li>
+				<li><a href="/actors/<%=actor["actor_id"]%>"><%= actor["actor"] %></a></li>
 			<% end %>
-	</ul>
+	</ol>
