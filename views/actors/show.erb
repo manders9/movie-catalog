@@ -4,11 +4,15 @@
 	<tbody>
 		<tr>
 			<th>Film </th>
+			<th></th>
+			<th></th>
 			<th>Role </th>
 		</tr>
 		<tr>
 			<% @actor.each do |info| %>
-			<td><a href="/actors/<%= info["movie_id"] %>"><%= info["movie"]%></a></td>
+			<td><a href="/movies/<%= info["movie_id"] %>"><%= info["movie"]%></a></td>
+			<td></td>
+			<td></td>
 			<td><%= info["role"] %></td>
 		</tr>
 		<% end %>

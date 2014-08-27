@@ -12,11 +12,15 @@
 	<tbody>
 		<tr>
 			<th>Actor </th>
+			<th></th>
+			<th></th>
 			<th>Role </th>
 		</tr>
 		<tr>
 			<% @info.each do |actor| %>
-			<td><a href="/actors/<%= actor["actor_id"] %>"><%= actor["actor"]%></a></td>
+			<td><a href="/actors/<%= actor["actor_id"] %>"><%= actor["actor"] %></a></td>
+			<td></td>
+			<td></td>
 			<td><%= actor["role"] %></td>
 		</tr>
 		<% end %>
