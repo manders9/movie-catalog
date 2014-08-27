@@ -10,7 +10,7 @@
 		</tr>
 		<tr>
 				<% @movies.each do |movie| %>
-				<td><a href="/movies/<%=movie["movie_id"]%>"><%= movie["movie"] %></a></td>
+				<td><a href="/movies/<%= movie["movie_id"]%>"><%= movie["movie"] %></a></td>
 				<td><%= movie["year"] %></td>
 				<td><%= movie["rating"] %></td>
 				<td><%= movie["studio"] %></td>

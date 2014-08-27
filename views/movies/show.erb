@@ -1,15 +1,12 @@
 
-<h1><%= @info["movie"][0] %></h1>
+<h1><%= @info[0]["movie"] %></h1>
 
 <ul>
-	<label>Year Released: </label>
-	<li><%= @info["year"] %></li>
-	<label>Rating: </label>
-	<li><%= @info["rating"] %></li>
-	<label>Studio: </label>
-	<li><%= @info["studio"] %></li>
-	<% end %>
+	<li>Year Released: <%= @info[0]["year"] %></li>
+	<li>Rating: <%= @info[0]["rating"] %></li>
+	<li>Studio: <%= @info[0]["studio"] %></li>
 </ul>
+
 
 <table>
 	<tbody>
@@ -18,11 +15,10 @@
 			<th>Role </th>
 		</tr>
 		<tr>
-			<% @info.each do |movie| %>
-			<td><a href="/actors/<%= @info["movie_id"]%>"><%= movie["actor"]%></a></td>
-			<td><%= @info["role"] %></td>
-			<% end %>
+			<% @info.each do |actor| %>
+			<td><a href="/actors/<%= actor["actor_id"] %>"><%= actor["actor"]%></a></td>
+			<td><%= actor["role"] %></td>
 		</tr>
+		<% end %>
 	</tbody>
 </table>
-
